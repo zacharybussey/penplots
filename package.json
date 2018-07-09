@@ -8,7 +8,9 @@
     "delaunay-triangulate": "^1.1.6",
     "density-clustering": "^1.3.0",
     "new-array": "^1.0.0",
+    "numjs": "^0.16.0",
     "penplot": "^3.0.0",
-    "ramda": "^0.25.0"
+    "ramda": "^0.25.0",
+    "tinycolor2": "^1.4.1"
   }
 }
