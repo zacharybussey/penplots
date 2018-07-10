@@ -4,18 +4,20 @@ import { clipPolylinesToBox } from "penplot/util/geom";
 import { random } from "penplot/util/random";
 
 export const orientation = Orientation.PORTRAIT;
-export const dimensions = [27.94, 35.56];
+//export const dimensions = [27.94, 35.56];
+export const dimensions = [12.7, 17.78]; // 5 x 7
 
 export default function createPlot(context, dimensions) {
   const [width, height] = dimensions;
   let lines = [];
-  const step = 0.8;
+  const stepLines = 0.45;
+  const step = 0.35;
 
-  for (let i = step + 4; i <= height - 1 - step; i += step) {
+  for (let i = stepLines + 2; i <= height - 1 - stepLines; i += stepLines) {
     let line = [];
     for (let j = step; j <= width; j += step) {
       var distanceToCenter = Math.abs(j - width / 2);
-      var variance = Math.max(width / 2 - 6 - distanceToCenter, 0);
+      var variance = Math.max(width / 2 - 3 - distanceToCenter, 0);
       let r = ((random() * variance) / 2) * -1;
       let point = [j, i + r];
       line.push(point);
@@ -24,7 +26,7 @@ export default function createPlot(context, dimensions) {
   }
 
   // Clip all the lines to a margin
-  const margin = 1.5;
+  const margin = 0.5;
   const box = [margin, margin, width - margin, height - margin];
   lines = clipPolylinesToBox(lines, box);
 
